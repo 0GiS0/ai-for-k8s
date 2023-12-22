@@ -35,7 +35,9 @@ brew tap sozercan/kubectl-ai https://github.com/sozercan/kubectl-ai
 brew install kubectl-ai
 ```
 
-Lo único que te queda por hacer es crear un modelo de GPT4 en Open AI o Azure Open AI. 
+Lo único que te queda por hacer es crear un modelo de GPT4 en Open AI o Azure Open AI.
+
+### Azure Open AI
 
 ```bash
 # Variables
@@ -73,7 +75,10 @@ az cognitiveservices account deployment create \
 Y exportar a las siguientes variables de entorno la información de tu modelo de GPT4:
 
 ```bash
-
+export OPENAI_API_KEY=$(az cognitiveservices account keys list --name $AZ_OPEN_AI --resource-group $RESOURCE_GROUP --query key1 -o tsv)
+export OPENAI_DEPLOYMENT_NAME=gpt-4
+export OPENAI_ENDPOINT=$(az cognitiveservices account show --name $AZ_OPEN_AI --resource-group $RESOURCE_GROUP --query 'properties.endpoint' -o tsv)
+```
 
 
 </details>
@@ -95,8 +100,18 @@ brew install k8sgpt
 
 Pero si abres este repo en un Dev Container o en GitHub Codespaces ya lo tienes instalado 😉
 
+Lo único que te queda por hacer es registrar tus credenciales en k8sgpt:
 
-### Azure Open AI:
+```bash
+k8sgpt auth add --backend azureopenai \
+--baseurl $OPENAI_ENDPOINT \
+--engine $OPENAI_DEPLOYMENT_NAME \
+--password $OPENAI_API_KEY \
+--model gpt-4
+```
+
+
+
 
 
 
