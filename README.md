@@ -110,10 +110,4 @@ k8sgpt auth add --backend azureopenai \
 --model gpt-4
 ```
 
-
-
-
-
-
-
 </details>
