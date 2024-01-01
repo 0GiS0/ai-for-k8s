@@ -27,7 +27,8 @@
 				"ms-vscode.vscode-speech",
 				"yzhang.markdown-all-in-one",
 				"ms-kubernetes-tools.vscode-kubernetes-tools",
-				
+				"esbenp.prettier-vscode",
+				"eamodio.gitlens"
 			]
 		}
 	},

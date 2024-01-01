@@ -8,13 +8,13 @@ services:
     volumes:
       - ../..:/workspaces:cached    
     command: sleep infinity
-  api:
-    depends_on:
-      - workspace
-    image: quay.io/go-skynet/local-ai
-    ports:
-      - 8080:8080    
-    volumes:
-      - ./models:/models:cached
-      - ./images/:/tmp/generated/images/
-    command: ["/usr/bin/local-ai", "--models-path", "/models", "--context-size", "700", "--threads 4" ]
+  # api:
+  #   depends_on:
+  #     - workspace
+  #   image: quay.io/go-skynet/local-ai
+  #   ports:
+  #     - 8080:8080    
+  #   volumes:
+  #     - ./models:/models:cached
+  #     - ./images/:/tmp/generated/images/
+  #   command: ["/usr/bin/local-ai", "--models-path", "/models", "--context-size", "700", "--threads 4" ]
