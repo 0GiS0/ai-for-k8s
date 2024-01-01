@@ -4,7 +4,7 @@ WORKDIR /src
 
 # Install Prerrequisites
 RUN apt-get update && \
-    apt-get install build-essential procps curl file git --no-install-recommends -y && \
+    apt-get install build-essential procps curl file git python3-pip --no-install-recommends -y && \
     rm -rf /var/lib/apt/lists/*
 
 USER vscode

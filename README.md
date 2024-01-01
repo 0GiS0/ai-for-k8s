@@ -93,6 +93,11 @@ Pero si abres este repo como un Dev container no tienes que instalar nada 😉 L
 export KOPYLOT_AUTH_TOKEN=<YOUR_OPENAI_API_KEY>
 ```
 
+Ejemplos de peticiones:
+
+1. *Crea un despliegue con nginx que tenga 5 réplicas y que pueda acceder a él a través del puerto 8080. Este despliegue debe estar dentro del namespace kopylot-demo, el cual también debe ser creado*
+2. *Recupera los pods del nginx alojados en el namespace llamado kopylot-demo*
+
 </details>
 
 
