@@ -1,15 +1,12 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/kubernetes-helm-minikube
 {
-	"name": "Kubernetes - Minikube-in-Docker",
+	"name": "AI Loves k8s",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	// "image": "mcr.microsoft.com/devcontainers/base:bullseye",
 	"build":{
 		"context": ".",
-		"dockerfile": "Dockerfile",
-		"args": {
-			"ARCH": "arm64"
-		}
+		"dockerfile": "Dockerfile"		
 	},
 	"features": {
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {

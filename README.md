@@ -79,7 +79,19 @@ export OPENAI_API_KEY=$(az cognitiveservices account keys list --name $AZ_OPEN_A
 export OPENAI_DEPLOYMENT_NAME=gpt-4
 export OPENAI_ENDPOINT=$(az cognitiveservices account show --name $AZ_OPEN_AI --resource-group $RESOURCE_GROUP --query 'properties.endpoint' -o tsv)
 ```
+## kopylot
 
+Se trata de otra herramienta que te ayuda a trabajar con tus clústers de Kubernetes. Puedes instalarlo con:
+
+```bash
+pip install kopylot
+```
+
+Pero si abres este repo como un Dev container no tienes que instalar nada 😉 Lo que sí que necesitas es exportar la siguiente variables de entorno con tu API key de OpenAI:
+
+```bash
+export KOPYLOT_AUTH_TOKEN=<YOUR_OPENAI_API_KEY>
+```
 
 </details>
 
