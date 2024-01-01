@@ -35,8 +35,6 @@ brew tap sozercan/kubectl-ai https://github.com/sozercan/kubectl-ai
 brew install kubectl-ai
 ```
 
-La forma más fácil de empezar a probarlo es con LocalAI y alguno de los modelos compatibles. En este Dev Container ya está configurado para que puedas probarlo 😉
-
 Si quieres probarlo con Azure Open AI puedes seguir estos pasos:
 
 ### Azure Open AI
