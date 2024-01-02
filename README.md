@@ -26,6 +26,25 @@ En Visual Studio Code solo tienes que instalar la extensión de GitHub Copilot: 
 <details>
 <summary> <h2>🎁 ... trabajar 👷🏼‍♀️ en tus clústers de Kubernetes</h2></summary>
 
+## kopylot
+
+Se trata de otra herramienta que te ayuda a trabajar con tus clústers de Kubernetes. Puedes instalarlo con:
+
+```bash
+pip install kopylot
+```
+
+Pero si abres este repo como un Dev container no tienes que instalar nada 😉 Lo que sí que necesitas es exportar la siguiente variables de entorno con tu API key de OpenAI:
+
+```bash
+export KOPYLOT_AUTH_TOKEN=<YOUR_OPENAI_API_KEY>
+```
+
+Ejemplos de peticiones:
+
+1. *Crea un despliegue con nginx que tenga 5 réplicas y que pueda acceder a él a través del puerto 8080. Este despliegue debe estar dentro del namespace kopylot-demo, el cual también debe ser creado*
+2. *Recupera los pods del nginx alojados en el namespace llamado kopylot-demo*
+
 ## kubectl ai
 
 kubectl ai es un plugin de kubectl que te ayuda a trabajar con tus clústers de Kubernetes. Puedes instalarlo con:
@@ -79,24 +98,6 @@ export OPENAI_API_KEY=$(az cognitiveservices account keys list --name $AZ_OPEN_A
 export OPENAI_DEPLOYMENT_NAME=gpt-4
 export OPENAI_ENDPOINT=$(az cognitiveservices account show --name $AZ_OPEN_AI --resource-group $RESOURCE_GROUP --query 'properties.endpoint' -o tsv)
 ```
-## kopylot
-
-Se trata de otra herramienta que te ayuda a trabajar con tus clústers de Kubernetes. Puedes instalarlo con:
-
-```bash
-pip install kopylot
-```
-
-Pero si abres este repo como un Dev container no tienes que instalar nada 😉 Lo que sí que necesitas es exportar la siguiente variables de entorno con tu API key de OpenAI:
-
-```bash
-export KOPYLOT_AUTH_TOKEN=<YOUR_OPENAI_API_KEY>
-```
-
-Ejemplos de peticiones:
-
-1. *Crea un despliegue con nginx que tenga 5 réplicas y que pueda acceder a él a través del puerto 8080. Este despliegue debe estar dentro del namespace kopylot-demo, el cual también debe ser creado*
-2. *Recupera los pods del nginx alojados en el namespace llamado kopylot-demo*
 
 </details>
 
