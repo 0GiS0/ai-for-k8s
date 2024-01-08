@@ -1,4 +1,4 @@
-# ⎈ Cómo la IA puede ayudarte con tus clústers de Kubernetes ⎈
+# ⎈ Cómo la IA puede ayudarte con tus clústeres de Kubernetes ⎈
 
 En este repo quiero compartir contigo tres formas en las que la inteligencia artificial puede ayudarte con tus clústers de Kubernetes. Para que puedas probar todo, y no tengas que instalar nada, puedes ejecutar este repo como un Dev Containers o en GitHub Codespaces, [¡del cual tienes 15GB/mes y 120 horas gratuitas al mes en tu cuenta personal!](https://docs.github.com/en/billing/managing-billing-for-github-codespaces/about-billing-for-github-codespaces#monthly-included-storage-and-core-hours-for-personal-accounts)
 
@@ -24,7 +24,7 @@ En Visual Studio Code solo tienes que instalar la extensión de GitHub Copilot: 
 </details>
 
 <details>
-<summary> <h2>🎁 ... trabajar 👷🏼‍♀️ en tus clústers de Kubernetes</h2></summary>
+<summary> <h2>🎁 ... trabajar 👷🏼‍♀️ en tus clústeres de Kubernetes</h2></summary>
 
 ## kopylot
 
@@ -117,7 +117,37 @@ source .env
 
 
 <details>
-<summary> <h2>🎁 ... analizar 🧐 tus clústers de Kubernetes</h2></summary>
+<summary> <h2>🎁 ... analizar 🧐 tus clústeres de Kubernetes</h2></summary>
+
+## k8sgpt
+
+<img src="images/k8sgpt-logo.png" width="20%" />
+
+k8sgpt es un modelo de lenguaje de inteligencia artificial que te ayuda a analizar tus clústers de Kubernetes. Puedes instalarlo con:
+
+```bash
+brew tap k8sgpt-ai/k8sgpt
+brew install k8sgpt
+```
+
+Pero si abres este repo en un Dev Container o en GitHub Codespaces ya lo tienes instalado 😉
+
+Lo único que te queda por hacer es registrar tus credenciales en k8sgpt:
+
+```bash
+k8sgpt auth add --backend azureopenai \
+--baseurl $OPENAI_ENDPOINT \
+--engine $OPENAI_DEPLOYMENT_NAME \
+--password $OPENAI_API_KEY \
+--model gpt-4
+```
+
+Y ahora puedes preguntarle a k8sgpt sobre tus clústeres de Kubernetes:
+
+```bash
+k8sgpt analyze --namespace something-is-wrong --backend azureopenai
+k8sgpt analyze --explain --namespace something-is-wrong --backend azureopenai
+```
 
 ## kopylot
 
@@ -158,34 +188,5 @@ También puedes utilizar kopylot audit para obtener más información sobre un r
 ```
 kopylot audit pod nginx-786466f74d-bbwg6
 ```
-
-## k8sgpt
-
-<img src="images/k8sgpt-logo.png" width="20%" />
-
-k8sgpt es un modelo de lenguaje de inteligencia artificial que te ayuda a analizar tus clústers de Kubernetes. Puedes instalarlo con:
-
-```bash
-brew tap k8sgpt-ai/k8sgpt
-brew install k8sgpt
-```
-
-Pero si abres este repo en un Dev Container o en GitHub Codespaces ya lo tienes instalado 😉
-
-Lo único que te queda por hacer es registrar tus credenciales en k8sgpt:
-
-```bash
-k8sgpt auth add --backend azureopenai \
---baseurl $OPENAI_ENDPOINT \
---engine $OPENAI_DEPLOYMENT_NAME \
---password $OPENAI_API_KEY \
---model gpt-4
-```
-
-Y ahora puedes preguntarle a k8sgpt sobre tus clústers de Kubernetes:
-
-```bash
-k8sgpt analyze --namespace something-is-wrong --backend azureopenai
-k8sgpt analyze --explain --namespace something-is-wrong --backend azureopenai
 
 </details>
