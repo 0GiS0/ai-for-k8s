@@ -87,7 +87,7 @@ az cognitiveservices account deployment create \
 --model-name gpt-4 \
 --model-version "0613"  \
 --model-format OpenAI \
---sku-capacity "1" \
+--sku-capacity "10" \
 --sku-name "Standard"
 ```
 
@@ -99,11 +99,65 @@ export OPENAI_DEPLOYMENT_NAME=gpt-4
 export OPENAI_ENDPOINT=$(az cognitiveservices account show --name $AZ_OPEN_AI --resource-group $RESOURCE_GROUP --query 'properties.endpoint' -o tsv)
 ```
 
+Si quieres puedes guardar estas variables en un .env
+    
+cat <<EOF > .env
+export OPENAI_API_KEY=$OPENAI_API_KEY
+export OPENAI_DEPLOYMENT_NAME=$OPENAI_DEPLOYMENT_NAME
+export OPENAI_ENDPOINT=$OPENAI_ENDPOINT
+EOF
+
+Y cargarlas con:
+
+```bash
+source .env
+```
+
 </details>
 
 
 <details>
 <summary> <h2>🎁 ... analizar 🧐 tus clústers de Kubernetes</h2></summary>
+
+## kopylot
+
+Esta herramienta te ayuda a identificar problemas en tu clúster. Puedes instalarlo con:
+
+```bash
+pip install kopylot
+```
+
+Pero si abres este repo como un Dev container no tienes que instalar nada 😉 Lo que sí que necesitas es exportar la siguiente variables de entorno con tu API key de OpenAI:
+
+```bash
+export KOPYLOT_AUTH_TOKEN=<YOUR_OPENAI_API_KEY>
+```
+
+Para probar esta opción puedes desplegar este manifiesto con algunos problemillas:
+
+```bash
+kubectl apply -f wrong-manifests/wrong-resources.yaml
+```
+
+Si echas un vistazo al namespace `something-is-wrong` te darás cuenta de que algunas cosas no van bien:
+
+```bash
+kubectl get all -n something-is-wrong
+kubectl get pods -n something-is-wrong
+```
+
+Vamos a preguntarle a kopylot qué está pasando:
+
+```bash
+kopylot diagnose deployment nginx
+kopylot diagnose pod nginx-786466f74d-bbwg6
+```
+
+También puedes utilizar kopylot audit para obtener más información sobre un recurso:
+
+```
+kopylot audit pod nginx-786466f74d-bbwg6
+```
 
 ## k8sgpt
 
@@ -127,5 +181,11 @@ k8sgpt auth add --backend azureopenai \
 --password $OPENAI_API_KEY \
 --model gpt-4
 ```
+
+Y ahora puedes preguntarle a k8sgpt sobre tus clústers de Kubernetes:
+
+```bash
+k8sgpt analyze --namespace something-is-wrong --backend azureopenai
+k8sgpt analyze --explain --namespace something-is-wrong --backend azureopenai
 
 </details>

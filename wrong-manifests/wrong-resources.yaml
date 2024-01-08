@@ -1,0 +1,47 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: something-is-wrong
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  namespace: something-is-wrong
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+        tier: frontend
+    spec:
+      containers:
+      - name: nginx
+        image: wrong-nginx-image
+        ports:
+        - containerPort: 80
+---
+
+# Create a service for the nginx
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  namespace: something-is-wrong
+  labels:
+    app: nginx
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+  selector:
+    app: bad-nginx
+  type: LoadBalancer
+  
